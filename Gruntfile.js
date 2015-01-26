@@ -149,6 +149,29 @@ module.exports = function (grunt) {
                 }
             }
         },
+        sass: {
+            options: {
+                loadPath: 'bower_components'
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= yeoman.app %>/styles',
+                    src: ['*.{scss,sass}'],
+                    dest: '.tmp/styles',
+                    ext: '.css'
+                }]
+            },
+            server: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= yeoman.app %>/styles',
+                    src: ['*.{scss,sass}'],
+                    dest: '.tmp/styles',
+                    ext: '.css'
+                }]
+            }
+        },
         // not enabled since usemin task does concat and uglify
         // check index.html to edit your build targets
         // enable this task if you prefer defining your build targets here
@@ -269,7 +292,8 @@ module.exports = function (grunt) {
                 'clean:server',
                 'createDefaultTemplate',
                 'jst',
-                'compass:server',
+                //'compass:server',
+                'sass:server',
                 'connect:test',
                 'open:test',
                 'watch'
@@ -280,7 +304,8 @@ module.exports = function (grunt) {
             'clean:server',
             'createDefaultTemplate',
             'jst',
-            'compass:server',
+            //'compass:server',
+            'sass:server',
             'connect:livereload',
             'open:server',
             'watch'
@@ -293,7 +318,8 @@ module.exports = function (grunt) {
                 'clean:server',
                 'createDefaultTemplate',
                 'jst',
-                'compass',
+                //'compass',
+                'sass:server',
                 'connect:test',
                 'mocha',
             ];
@@ -311,7 +337,7 @@ module.exports = function (grunt) {
         'clean:dist',
         'createDefaultTemplate',
         'jst',
-        'compass:dist',
+        'sass:dist',
         'useminPrepare',
         'imagemin',
         'htmlmin',

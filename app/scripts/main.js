@@ -120,9 +120,6 @@ $(document).ready(function () {
 
                 success: function(events){
                     console.log('got events!');
-                    // Create underscore template and pass template jquery id, scope the object to only pass models
-                    //var template = _.template( $('#event-list').html(), { events : events.models } );
-                    //that.$el.html(template);
 
                     var query = new Parse.Query(Photo);
                     query.equalTo('eventId', options.id);
@@ -148,25 +145,6 @@ $(document).ready(function () {
                 }
 
             });
-
-            /*
-            var query = new Parse.Query(Photo);
-            query.equalTo('eventId', options.id);
-            var collection = query.collection();
-            collection.fetch({
-
-                success: function(photos){
-                    console.log('got photos!');
-                    // Create underscore template and pass template jquery id, scope the object to only pass models
-                    var template = _.template( $('#photo-list').html(), { photos : photos.models } );
-                    that.$el.html(template);
-                },
-
-                error: function(){
-                    alert('Unable to retrieve data.');
-                }
-
-            });*/
         },
 
         events: {
