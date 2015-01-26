@@ -38,9 +38,45 @@
             <div class="col-sm-3">
                 <ul class="nav nav-pills nav-stacked">
                     <% _.each(events, function(event){ %>
-                            <li>
-                                <a><%= event.get('eventName') %></a>
+                            <li class="event">
+                                <a href="#/event/<%= event.id %>"><%= event.get('eventName') %></a>
+                                <input class="event-id hidden" value="<%= event.id %>" />
                             </li>
+                    <% }); %>
+                </ul>
+            </div>
+        </script>
+
+        <script type="text/template" id="photo-list">
+            <div class="col-sm-9">
+                <ul>
+                    <% _.each(photos, function(photo){ %>
+                            <div class="photo col-xs-12">
+                                <img src="<%= photo.get('file').url() %>" class="img-responsive"/>
+                            </div>
+                    <% }); %>
+                </ul>
+            </div>
+        </script>
+
+        <script type="text/template" id="photo-event-list">
+            <div class="col-sm-3">
+                <ul class="nav nav-pills nav-stacked">
+                    <% _.each(events, function(event){ %>
+                            <li class="event">
+                                <a href="#/event/<%= event.id %>"><%= event.get('eventName') %></a>
+                                <input class="event-id hidden" value="<%= event.id %>" />
+                            </li>
+                    <% }); %>
+                </ul>
+            </div>
+
+            <div class="col-sm-9">
+                <ul>
+                    <% _.each(photos, function(photo){ %>
+                            <div class="photo col-xs-12">
+                                <img src="<%= photo.get('file').url() %>" class="img-responsive"/>
+                            </div>
                     <% }); %>
                 </ul>
             </div>
